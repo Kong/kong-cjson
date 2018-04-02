@@ -1,9 +1,9 @@
-package = "lua-cjson"
+package = "kong-cjson"
 version = "2.1.0.6-1"
 
 source = {
-    url = "git+https://github.com/openresty/lua-cjson",
-    tag = "2.1.0.6",
+    url = "git@github.com:Kong/kong-cjson.git",
+    tag = "2.1.0.6"
 }
 
 description = {
@@ -27,7 +27,7 @@ dependencies = {
 build = {
     type = "builtin",
     modules = {
-        cjson = {
+        kong_cjson = {
             sources = { "lua_cjson.c", "strbuf.c", "fpconv.c" },
             defines = {
 -- LuaRocks does not support platform specific configuration for Solaris.
@@ -38,11 +38,11 @@ build = {
     },
     install = {
         lua = {
-            ["cjson.util"] = "lua/cjson/util.lua"
+            ["kong.cjson.util"] = "lua/cjson/util.lua"
         },
         bin = {
-            json2lua = "lua/json2lua.lua",
-            lua2json = "lua/lua2json.lua"
+            kong_json2lua = "lua/json2lua.lua",
+            kong_lua2json = "lua/lua2json.lua"
         }
     },
     -- Override default build options (per platform)
