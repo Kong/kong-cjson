@@ -193,3 +193,29 @@ cjson.encode(t) -- {"my_array":[]} properly re-encoded as an array
 ```
 
 [Back to TOC](#table-of-contents)
+
+
+decode_empty_array_with_array_mt
+--------------------------
+**syntax:** `cjson.decode_empty_array_with_array_mt(enabled)`
+
+**default:** false
+
+If enabled, JSON Empty Arrays are decoded empty JSON Arrays instead (`[]`),
+ and JSON Empty Objects are decoded as empty JSON Objects (`{}`),
+
+Example:
+
+```lua
+local cjson = require "cjson"
+local str = '{"emptyArray":[],"emptyObject":{},"arrays":["one","two","three"],"boolean":false,"str":"string","num":1,"empty":null}'
+cjson.decode_empty_array_with_array_mt(true)
+local obj = cjson.decode(str)
+str = cjson.encode(obj)
+print(str)
+
+-- console out put
+-- {"emptyArray":[],"num":1,"emptyObject":{},"arrays":["one","two","three"],"empty":null,"boolean":false,"str":"string"}
+```
+
+[Back to TOC](#table-of-contents)
